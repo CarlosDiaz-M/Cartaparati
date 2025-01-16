@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Ti</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1a1a2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+    }
+
+    .container {
+      position: relative;
+      text-align: center;
+    }
+
+    .envelope {
+      width: 200px;
+      height: 150px;
+      background: #ffd700;
+      position: relative;
+      border-radius: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .envelope:before, .envelope:after {
+      content: "";
+      position: absolute;
+      width: 200px;
+      height: 100px;
+      background: #ffa500;
+      top: 0;
+      left: 0;
+      border-radius: 10px 10px 0 0;
+      transform-origin: top center;
+      transition: transform 0.5s ease;
+    }
+
+    .envelope:after {
+      top: auto;
+      bottom: 0;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .envelope.open:before {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open:after {
+      transform: rotateX(-180deg);
+    }
+
+    .card {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 400px;
+      background: #fff;
+      color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+    }
+
+    .card.show {
+      display: block;
+    }
+
+    .card p {
+      margin: 0;
+      text-align: justify;
+    }
+
+    .moon {
+      margin-top: 20px;
+      font-size: 2rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="envelope" id="envelope"></div>
+    <div class="card" id="card">
+      <p>
+        Mi amor, cada vez que veo la luna, no puedo evitar pensar en ti. 
+        Su luz suave y constante me recuerda a la calma que traes a mi vida, 
+        y su belleza me hace pensar en la tuya. 
+        Así como la luna brilla incluso en la noche más oscura, 
+        tú iluminas mis días con tu sonrisa y tu amor.
+      </p>
+      <p class="moon">🌙 Te quiero hasta la luna y más allá. 🌙</p>
+    </div>
+  </div>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const card = document.getElementById('card');
+
+    envelope.addEventListener('click', () => {
+      envelope.classList.add('open');
+      setTimeout(() => {
+        card.classList.add('show');
+      }, 500); // Espera a que la animación del sobre termine
+    });
+  </script>
+</body>
+</html>
